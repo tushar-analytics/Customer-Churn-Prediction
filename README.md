@@ -84,5 +84,121 @@ plt.tight_layout()
 plt.show()
 ```
 
+---
+
+## 🤖 **Model Building**
+
+| **Model**              | **Status**             |
+|------------------------|------------------------|
+| Logistic Regression    | Baseline model         |
+| Random Forest          | Good performance       |
+| **XGBoost**            | **Best-performing model** |
+
+---
+
+## 🏆 **Best Model: XGBoost**
+
+| **Hyperparameter** | **Value** |
+|--------------------|-----------|
+| n_estimators       | 2000      |
+| learning_rate      | 0.08      |
+| max_depth          | 6         |
+| subsample          | 0.8       |
+| colsample_bytree   | 0.8       |
+| eval_metric        | logloss   |
+
+### **Saving the Model**
+
+```python
+joblib.dump(best_xgb_model, "xgb_churn_model.pkl")
+```
+
+---
+
+## 🔍 **Explainability (SHAP)**
+
+| **Method**            | **Purpose**                               |
+|-----------------------|---------------------------------------------|
+| SHAP Summary Plot     | Reveals global feature importance          |
+| Booster Extract       | Needed because TreeExplainer doesn't support pipelines |
+| Feature Importance    | Confirms top predictors                    |
+
+### **Top Predictive Features**
+- Tenure  
+- SatisfactionScore  
+- CashbackAmount  
+- CityTier  
+
+---
+
+## 🔮 **Prediction Pipeline**
+
+✔ Accepts raw user input  
+✔ Converts categorical values  
+✔ Passes cleaned data into the model pipeline  
+
+### **Example: Mapping User Input**
+
+```python
+input_val = marital_map[user_choice]
+```
+
+---
+
+## 🗂️ **Project Structure**
+
+
+| **File**               | **Description**            |
+|------------------------|-----------------------------|
+| E_Comm.csv             | Dataset                    |
+| churn_notebook.ipynb   | Full workflow notebook     |
+| xgb_churn_model.pkl    | Final trained model        |
+| predict.py             | Input-to-prediction script |
+| README.md              | Project documentation      |
+
+---
+
+## 📈 **Results**
+
+| **Metric**  | **Observation**                |
+|-------------|--------------------------------|
+| ROC-AUC     | Highest for XGBoost            |
+| Key Drivers | Tenure, SatisfactionScore, CashbackAmount |
+| Deployment  | Model ready for API / Streamlit |
+
+---
+
+## 🧪 **How to Run**
+
+### **Install Dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 💡 **Future Enhancements**
+
+| **Improvement**     | **Benefit**               |
+|----------------------|---------------------------|
+| Streamlit App       | User-friendly UI          |
+| SMOTE               | Handle class imbalance    |
+| Optuna              | Faster & better tuning    |
+| Power BI Dashboard  | Business insights         |
+
+---
+
+## 🤝 **Contributing**
+
+Feel free to submit issues or pull requests.
+
+---
+
+## ⭐ **Support**
+
+If you found this project helpful, please ⭐ the repository!
+
+
+
 
 
