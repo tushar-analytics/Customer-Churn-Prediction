@@ -1,87 +1,74 @@
-📦 E-Commerce Customer Churn Prediction
+# 📦 **E-Commerce Customer Churn Prediction**
 
-Predicting whether a customer will churn based on behavioral and demographic features.
+Predicting customer churn for an e-commerce platform using machine learning (XGBoost, Random Forest, Logistic Regression).
 
-🚀 Project Overview
+---
 
-Customer churn is a major challenge for e-commerce companies. This project builds a machine learning pipeline to predict whether a customer is likely to churn using multiple models and selects the best-performing one (XGBoost).
+## 📘 **Project Overview**
 
-The project includes:
+This project builds an end-to-end machine learning workflow for churn prediction:
 
-Data cleaning & preprocessing
+- Data preprocessing  
+- Exploratory Data Analysis (EDA)  
+- Feature engineering  
+- Model training and hyperparameter tuning  
+- SHAP explainability  
+- Deployment-ready prediction pipeline  
 
-Exploratory Data Analysis (EDA)
+---
 
-Feature engineering
+## 📁 **Dataset Information**
 
-Model training & hyperparameter tuning
+| **Feature Name**          | **Description** |
+|---------------------------|-----------------|
+| Tenure                    | Customer tenure in months |
+| Complain                  | Complaint raised (0/1) |
+| NumberOfAddress           | Total addresses used |
+| CashbackAmount            | Cashback received |
+| MaritalStatus             | 1 = Married, 2 = Single, 3 = Divorced |
+| WarehouseToHome           | Distance from warehouse |
+| DaySinceLastOrder         | Days since last order |
+| SatisfactionScore         | Rating 1–5 |
+| CityTier                  | Tier 1/2/3 city |
+| Churn (Target)            | 0 = Not churned, 1 = Churned |
 
-SHAP explainability
+_File used_: **E_Comm.csv**
 
-Model deployment-ready prediction script
+---
 
-📁 Dataset
+## 🧹 **Data Preprocessing**
 
-The dataset contains customer-level information such as:
+| **Step** | **Description** |
+|----------|-----------------|
+| Missing Values | Handled using imputation/removal |
+| Outliers | Clipped with `np.clip()` |
+| Encoding | Custom mapping → Marital Status |
+| Scaling | StandardScaler inside pipeline |
+| Split | Train-test split (80/20) |
 
-Tenure
+**Marital Status Mapping**
 
-Complain
-
-NumberOfAddress
-
-CashbackAmount
-
-MaritalStatus (encoded as 1 = Married, 2 = Single, 3 = Divorced)
-
-WarehouseToHome
-
-DaySinceLastOrder
-
-SatisfactionScore
-
-CityTier
-
-Target variable: Churn
-
-File used: E_Comm.csv
-
-🧹 Data Preprocessing
-
-Steps performed:
-
-Handling missing values
-
-Outlier clipping using np.clip()
-
-Categorical encoding (LabelEncoder, Manual mapping)
-
-Train-test split
-
-Scaling using StandardScaler
-
-Building ML pipelines
-
-Example of marital status mapping:
-
+```python
 marital_map = {"Married": 1, "Single": 2, "Divorced": 3}
+```
 
-📊 Exploratory Data Analysis
+---
 
-Several visualizations were created including:
+## 📊 **Exploratory Data Analysis (EDA)**
 
-Distribution plots
+| **Analysis Type**        | **What It Shows**            |
+|--------------------------|-------------------------------|
+| Distribution plots       | Spread and skewness          |
+| Correlation heatmap      | Relationships between features |
+| Churn ratio chart        | Class imbalance              |
+| Boxplots                 | Outlier detection            |
+| ROC curves               | Model comparison             |
 
-Correlation heatmaps
+---
 
-Churn ratio pie chart
+### **ROC Curve Subplot Example**
 
-Boxplots for numerical variables
-
-ROC curve comparison of multiple models
-
-Example for ROC subplot comparison:
-
+```python
 fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 
 RocCurveDisplay.from_estimator(log_reg_grid, X_test, y_test, ax=axes[0])
@@ -95,100 +82,7 @@ axes[2].set_title("XGBoost")
 
 plt.tight_layout()
 plt.show()
-
-🤖 Model Building
-
-Multiple models were tested:
-
-Logistic Regression
-
-Random Forest
-
-XGBoost (best model)
-
-🔧 Best XGBoost Hyperparameters
-n_estimators = 2000  
-learning_rate = 0.08  
-max_depth = 6  
-subsample = 0.8  
-colsample_bytree = 0.8  
-random_state = 42  
-eval_metric = "logloss"
+```
 
 
-This configuration delivered the highest performance.
 
-🏆 Best Model
-
-The final model used is XGBoost inside a Scikit-Learn Pipeline.
-Saved using:
-
-joblib.dump(best_xgb_model, "xgb_churn_model.pkl")
-
-
-best_xgb_model = final trained XGBoost pipeline.
-
-🔍 Explainability (SHAP)
-
-Since SHAP TreeExplainer does not support sklearn pipelines directly, model input was passed using:
-
-Extracting underlying booster
-
-Creating SHAP plots for feature impact
-
-Feature importance was evaluated using both:
-
-XGBoost built-in feature importance
-
-SHAP summary plots
-
-🔮 Prediction Function
-
-A deployment-ready function was built to accept raw user input and convert it into the correct model format.
-
-Example: Mapping user selections for Marital Status:
-
-marital_map = {"Married": 1, "Single": 2, "Divorced": 3}
-input_val = marital_map[user_input]
-
-🗂️ Project Structure
-├── E_Comm.csv                  # Dataset
-├── churn_notebook.ipynb        # Full analysis & model building
-├── xgb_churn_model.pkl         # Saved best model
-├── predict.py                  # Prediction script (optional)
-├── README.md                   # Project documentation
-
-📈 Results
-
-XGBoost achieved the best ROC-AUC score
-
-Feature importance highlighted: Tenure, SatisfactionScore, CashbackAmount, CityTier
-
-Model is ready for API/Streamlit deployment
-
-🧪 How to Use
-Install Required Libraries
-pip install -r requirements.txt
-
-Run Prediction
-from joblib import load
-model = load("xgb_churn_model.pkl")
-prediction = model.predict(input_data)
-
-💡 Future Improvements
-
-Deploy with a Streamlit web app
-
-Hyperparameter tuning using Optuna
-
-Add SMOTE balancing
-
-Build dashboard in Power BI
-
-🤝 Contributing
-
-Contributions, suggestions, and improvements are welcome!
-
-⭐ Show Support
-
-If you find this project useful, please ⭐ the repository!
