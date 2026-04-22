@@ -168,6 +168,12 @@ input_val = marital_map[user_choice]
 
 ---
 
+## **Dashboard**
+
+<p align="center">
+  <img src="Video Project 4.gif" width="700"/>
+</p>
+
 ## 🧪 **How to Run**
 
 ### **Install Dependencies**
