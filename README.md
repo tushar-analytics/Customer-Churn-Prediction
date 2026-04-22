@@ -17,6 +17,19 @@ This project builds an end-to-end machine learning workflow for churn prediction
 
 ---
 
+## 🗂️ **Project Structure**
+
+
+| **File**               | **Description**            |
+|------------------------|-----------------------------|
+| E_Comm.csv             | Dataset                    |
+| churn_notebook.ipynb   | Full workflow notebook     |
+| xgb_churn_model.pkl    | Final trained model        |
+| predict.py             | Input-to-prediction script |
+| README.md              | Project documentation      |
+
+---
+
 ## 📁 **Dataset Information**
 
 | **Feature Name**          | **Description** |
@@ -145,19 +158,6 @@ input_val = marital_map[user_choice]
 
 ---
 
-## 🗂️ **Project Structure**
-
-
-| **File**               | **Description**            |
-|------------------------|-----------------------------|
-| E_Comm.csv             | Dataset                    |
-| churn_notebook.ipynb   | Full workflow notebook     |
-| xgb_churn_model.pkl    | Final trained model        |
-| predict.py             | Input-to-prediction script |
-| README.md              | Project documentation      |
-
----
-
 ## 📈 **Results**
 
 | **Metric**  | **Observation**                |
@@ -173,6 +173,8 @@ input_val = marital_map[user_choice]
 <p align="center">
   <img src="Video Project 4.gif" width="700"/>
 </p>
+
+---
 
 ## 🧪 **How to Run**
 
