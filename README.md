@@ -17,19 +17,6 @@ This project builds an end-to-end machine learning workflow for churn prediction
 
 ---
 
-## 🗂️ **Project Structure**
-
-
-| **File**               | **Description**            |
-|------------------------|-----------------------------|
-| E_Comm.csv             | Dataset                    |
-| churn_notebook.ipynb   | Full workflow notebook     |
-| xgb_churn_model.pkl    | Final trained model        |
-| predict.py             | Input-to-prediction script |
-| README.md              | Project documentation      |
-
----
-
 ## 📁 **Dataset Information**
 
 | **Feature Name**          | **Description** |
